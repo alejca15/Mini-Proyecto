@@ -4,7 +4,7 @@ const { Proyectos } = require("../models"); // Asegúrate de que este nombre coi
 //----------------------Get------------------------//
 const get_all_proyectos = async (req, res) => {
     try {
-      const proyectos = await Proyetos.findAll();
+      const proyectos = await Proyectos.findAll();
       res.status(200).json(proyectos);
     } catch (error) {
       console.error(error); // Imprimir error para depuración
