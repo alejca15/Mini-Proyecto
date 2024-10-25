@@ -1,6 +1,16 @@
 module.exports = (sequelize) => {
   class Proyectos extends Model {
-    static associate(models) {}
+    static associate(models) {
+      // Relación muchos a muchos con Usuarios a través de ResponsablesProyecto
+      this.belongsToMany(models.Usuarios, {
+        through: 'ResponsablesProyecto',
+        foreignKey: 'id_proyecto',
+        otherKey: 'id_usuario',
+      });
+
+      // Relación uno a muchos con Tareas
+      this.hasMany(models.Tareas, { foreignKey: 'id_proyecto' });
+    }
   }
   Proyectos.init(
     {
