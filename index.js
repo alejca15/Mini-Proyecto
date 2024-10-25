@@ -3,7 +3,8 @@ const { sequelize } = require('./models'); // Importa la conexión a la base de 
 const usuariosRoutes = require('./routes/usuarios_routes'); // Importa las rutas de productos
 const tareasRoutes = require('./routes/Tareas_routas')
 const rolesRoutes = require('./routes/Roles_routas')
-
+const responsables_x_proyectosRoutes = require('./routes/responsables_x_proyectos_routes')
+const proyectoRoutes = require('./routes/proyecto_routes')
 const app = express();
 const PORT = 3000;
 
@@ -18,7 +19,8 @@ sequelize.authenticate()
 app.use('/Usuarios', usuariosRoutes);
 app.use('/Tareas', tareasRoutes);
 app.use('/Roles', rolesRoutes)
-
+app.use('/Proyectos', proyectoRoutes)
+app.use('/ResponsablesxProyectos', responsables_x_proyectosRoutes)
 
 // Iniciar el servidor
 app.listen(PORT, () => {

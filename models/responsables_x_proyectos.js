@@ -1,18 +1,20 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
   class Responsables_x_proyectos extends Model {
     static associate(models) {
-      Responsables_x_proyectos.belongsTo(models.Clientes, {
-        foreignkey: "id_usuario",
-        as: "Usuarios",
-      }),
-      Responsables_x_proyectos.belongsTo(models.Clientes, {
-        foreignkey: "id_proyecto",
-        as: "Proyectos",
+      Responsables_x_proyectos.belongsTo(models.Usuarios, {
+        foreignKey: "id_usuario", 
+        as: "Usuario",
+      });
+      Responsables_x_proyectos.belongsTo(models.Proyectos, {
+        foreignKey: "id_proyecto", 
+        as: "Proyecto",
       });
     }
   }
+
   Responsables_x_proyectos.init(
     {
       id_usuario: {
@@ -24,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       id_proyecto: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER, 
         allowNull: false,
         references: {
           model: "Proyectos",
@@ -38,5 +40,6 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "Responsablesxproyectos",
     }
   );
+
   return Responsables_x_proyectos;
 };
