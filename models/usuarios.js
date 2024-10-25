@@ -3,7 +3,12 @@ const { Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   class Usuarios extends Model {
-    static associate(models) {}
+    static associate(models) {
+      Usuarios.hasMany(Rol, {
+        foreignKey: "id_usuario",
+        as: "Usuarios",
+      });
+    }
   }
   Usuarios.init(
     {
