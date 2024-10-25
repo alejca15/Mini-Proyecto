@@ -6,10 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       Responsables_x_proyectos.belongsTo(models.Clientes, {
         foreignkey: "id_usuario",
         as: "Usuarios",
-      });
-    }
-    
-    static associate(models) {
+      }),
       Responsables_x_proyectos.belongsTo(models.Clientes, {
         foreignkey: "id_proyecto",
         as: "Proyectos",
@@ -37,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Responsables_x_proyectos",
+      modelName: "Responsablesxproyectos",
+      tableName: "Responsablesxproyectos",
     }
   );
   return Responsables_x_proyectos;

@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Tareas", {
+    await queryInterface.createTable('Roles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      id_usuario: {
         type: Sequelize.INTEGER,
+        references:{
+          model:"Usuarios",
+          key:"id"
+        }
       },
       id_proyecto: {
         type: Sequelize.INTEGER,
-        references: {
-          model: "Proyectos",
-          key: "id",
-        },
+        references:{
+          model:"Proyectos",
+          key:"id"
+        }
       },
-      nombre_tarea: {
-        type: Sequelize.STRING,
-      },
-      descripcion_tarea: {
-        type: Sequelize.STRING,
-      },
-      estado: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      rol: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +39,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Tareas");
-  },
+    await queryInterface.dropTable('Roles');
+  }
 };
