@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Tareas_Controller = require("../controllers/Tareas_controller"); // Importar el controlador
+const Tareas_Controller = require("../controllers/Tareas_controllers"); // Importar el controlador
 
 // Definir las rutas
 router.get("/", Tareas_Controller.get_all_Tareas); // Obtener todos los TAREAS
