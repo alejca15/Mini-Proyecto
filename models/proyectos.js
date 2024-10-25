@@ -1,3 +1,5 @@
+const { Model, DataTypes } = require('sequelize');
+
 module.exports = (sequelize) => {
   class Proyectos extends Model {
     static associate(models) {
