@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   class Usuarios extends Model {
     static associate(models) {
       // Relación uno a uno con Rol
-      this.hasOne(models.Rol, { foreignKey: "id_usuario" });
+      this.hasOne(models.Roles, { foreignKey: "id_usuario" });
       // Relación muchos a muchos con Proyectos a través de ResponsablesProyecto
       this.belongsToMany(models.Proyectos, {
         through: "ResponsablesProyecto",
