@@ -1,25 +1,31 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   class Proyectos extends Model {
     static associate(models) {
       // Relación muchos a muchos con Usuarios a través de ResponsablesProyecto
       this.belongsToMany(models.Usuarios, {
-        through: 'ResponsablesProyecto',
-        foreignKey: 'id_proyecto',
-        otherKey: 'id_usuario',
+        through: "ResponsablesProyecto",
+        foreignKey: "id_proyecto",
+        otherKey: "id_usuario",
       });
 
       // Relación uno a muchos con Tareas
-      this.hasMany(models.Tareas, { foreignKey: 'id_proyecto' });
+      this.hasMany(models.Tareas, { foreignKey: "id_proyecto" });
+
+      // Relación opcional con Coach
+      this.belongsTo(models.Coach, {
+        foreignKey: "id_coach",
+      });
     }
   }
+
   Proyectos.init(
     {
       nombre_proyecto: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique:true
+        unique: true,
       },
       completado: {
         type: DataTypes.BOOLEAN,
