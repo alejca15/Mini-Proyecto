@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const categorias = require("./categorias");
 
 module.exports = (sequelize) => {
   class Proyectos extends Model {
@@ -12,11 +13,9 @@ module.exports = (sequelize) => {
 
       // Relación uno a muchos con Tareas
       this.hasMany(models.Tareas, { foreignKey: "id_proyecto" });
-
-      // Relación opcional con Coach
-      this.belongsTo(models.Coach, {
-        foreignKey: "id_coach",
-      });
+      this.belongsTo(models.Clientes, { foreignKey: "id_cliente" });
+      this.belongsTo(models.Categorias, { foreignKey: "id_categoria" });
+      this.belongsTo(models.Coach, { foreignKey: "id_coach" });
     }
   }
 
@@ -43,6 +42,30 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
+      id_cliente: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Clientes",
+          key: "id",
+        },
+      },
+      id_coach:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Coach",
+          key: "id",
+        },
+      },
+      id_categoria:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Categorias",
+          key: "id",
+        },
+      }
     },
     {
       sequelize,
