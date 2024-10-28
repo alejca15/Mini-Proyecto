@@ -18,6 +18,7 @@ module.exports = (sequelize) => {
       this.belongsTo(models.Coach, { foreignKey: "id_coach" });
     }
   }
+
   Proyectos.init(
     {
       nombre_proyecto: {
