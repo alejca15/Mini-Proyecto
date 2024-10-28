@@ -14,13 +14,16 @@ const get_all_proyectos = async (req, res) => {
 //----------------------Post------------------------//
 const post_proyectos = async (req, res) => {
     try {
-      const { nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega} = req.body;
+      const { nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega,id_cliente,id_coach,id_categoria} = req.body;
       const proyecto = await Proyectos.create({
         nombre_proyecto,
         completado,
         progreso,
         fecha_inicio,
-        fecha_entrega
+        fecha_entrega,
+        id_cliente,
+        id_coach,
+        id_categoria
       });
       res.status(201).json(proyecto);
     } catch (error) {
@@ -32,12 +35,12 @@ const post_proyectos = async (req, res) => {
 const put_proyectos= async (req , res) => {
     try {
      const{id}=req.params
-     const  {nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega }= req.body;
+     const  {nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega,id_cliente,id_coach,id_categoria }= req.body;
    
      const proyecto = await Proyectos.findByPk(id);
      if(!proyecto) return res.status(404).json({error:'Proyecto no encontrado'});
    
-     await proyecto.update({nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega });
+     await proyecto.update({nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega,id_cliente,id_coach,id_categoria });
      res.status(200).json(proyecto)
     } catch (error) {
      res.status(500).json({error:'error al actualizar el usuario.'})
