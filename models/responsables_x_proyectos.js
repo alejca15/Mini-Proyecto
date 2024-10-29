@@ -36,8 +36,8 @@ module.exports = (sequelize) => {
     },
     {
       sequelize,
-      modelName: "Responsablesxproyectos",
-      tableName: "Responsablesxproyectos",
+      modelName: "Responsables_x_proyectos",
+      tableName: "Responsables_x_proyectos",
     }
   );
 

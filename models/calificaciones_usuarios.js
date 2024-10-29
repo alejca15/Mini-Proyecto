@@ -1,13 +1,13 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   class Calificaciones_usuarios extends Model {
     static associate(models) {}
   }
   Calificaciones_usuarios.init(
     {
       id_usuario: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:false,
         references:{
           model:"Usuarios",
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       id_proyecto: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:false,
         references:{
           model:"Proyectos",

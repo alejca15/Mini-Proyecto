@@ -16,10 +16,16 @@ module.exports = (sequelize) => {
       this.belongsTo(models.Clientes, { foreignKey: "id_cliente" });
       this.belongsTo(models.Categorias, { foreignKey: "id_categoria" });
       this.belongsTo(models.Coach, { foreignKey: "id_coach" });
-      this.hasMany(Requisitos, { foreignKey: 'id_proyecto' });
-      this.belongsToMany(HerramientasUsadas, { through: HerramientasxProyectos, foreignKey: 'id_proyecto' });
-      this.hasMany(CalificacionProyecto, { foreignKey: 'id_proyecto' });
-      this.belongsToMany(Usuarios, { through: CalificacionesUsuarios, foreignKey: 'id_proyecto' });
+      this.hasMany(models.Requisitos, { foreignKey: "id_proyecto" });
+      this.belongsToMany(models.Herramientas, {
+        through: models.Herramientas_x_proyectos, 
+        foreignKey: "id_proyecto",
+      });
+      this.hasMany(models.Calificacion_proyectos, { foreignKey: "id_proyecto" });
+      this.belongsToMany(models.Usuarios, {
+        through: models.Calificaciones_usuarios,
+        foreignKey: "id_proyecto",
+      });
     }
   }
 
@@ -54,7 +60,7 @@ module.exports = (sequelize) => {
           key: "id",
         },
       },
-      id_coach:{
+      id_coach: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -62,14 +68,14 @@ module.exports = (sequelize) => {
           key: "id",
         },
       },
-      id_categoria:{
+      id_categoria: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: "Categorias",
           key: "id",
         },
-      }
+      },
     },
     {
       sequelize,

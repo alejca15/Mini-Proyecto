@@ -1,11 +1,11 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
+const { Model, DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
   class Herramientas extends Model {
     static associate(models) {
-      Herramientas.belongsToMany(Proyectos, {
-        through: HerramientasxProyectos,
-        foreignKey: "id_herramientas",
+     Herramientas.belongsToMany(models.Proyectos, {
+        through: models.Herramientas_x_proyectos, 
+        foreignKey: "id_herramienta", 
       });
     }
   }

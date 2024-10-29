@@ -8,8 +8,8 @@ module.exports = (sequelize) => {
         foreignkey: "id_proyecto",
         as: "Proyectos",
       });
-      Tareas.hasMany(HistorialTarea, { foreignKey: "id_tarea" });
-      Tareas.hasMany(Comentarios, { foreignKey: "id_tarea" });
+      Tareas.hasMany(models.Historial_tareas, { foreignKey: "id_tarea" });
+      Tareas.hasMany(models.Comentarios, { foreignKey: "id_tarea" });
     }
   }
   Tareas.init(
