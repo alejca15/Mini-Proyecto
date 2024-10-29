@@ -33,7 +33,7 @@ const put_coach= async (req , res) => {
      const coach = await Coach.findByPk(id);
      if(!coach) return res.status(404).json({error:'Coach no encontrado'});
    
-     await proyecto.update({nombre_coach,apellido_coach,correo_coach});
+     await coach.update({nombre_coach,apellido_coach,correo_coach});
      res.status(200).json(coach)
     } catch (error) {
      res.status(500).json({error:'error al actualizar el coach.'})
