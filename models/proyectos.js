@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
       this.belongsTo(models.Categorias, { foreignKey: "id_categoria" });
       this.belongsTo(models.Coach, { foreignKey: "id_coach" });
       this.hasMany(Requisitos, { foreignKey: 'id_proyecto' });
+      this.belongsToMany(HerramientasUsadas, { through: HerramientasxProyectos, foreignKey: 'id_proyecto' });
+      this.hasMany(CalificacionProyecto, { foreignKey: 'id_proyecto' });
+      this.belongsToMany(Usuarios, { through: CalificacionesUsuarios, foreignKey: 'id_proyecto' });
     }
   }
 

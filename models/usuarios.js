@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
         foreignKey: "id_usuario",
         otherKey: "id_proyecto",
       });
+      Usuarios.belongsToMany(Proyectos, { through: CalificacionesUsuarios, foreignKey: 'id_usuario' });
     }   
   }
   Usuarios.init(
