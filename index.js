@@ -7,7 +7,7 @@ const responsables_x_proyectosRoutes = require('./routes/responsables_x_proyecto
 const proyectoRoutes = require('./routes/proyecto_routes')
 const app = express();
 const PORT = 3000;
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/auth_routes');
 
 app.use(express.json()); // Middleware para parsear JSON
 

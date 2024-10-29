@@ -1,13 +1,13 @@
 "use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-  class herramientas_x_proyectos extends Model {
+const { Model, DataTypes } = require("sequelize");
+module.exports = (sequelize) => {
+  class Herramientas_x_proyectos extends Model {
     static associate(models) {}
   }
-  herramientas_x_proyectos.init(
+  Herramientas_x_proyectos.init(
     {
       id_herramienta: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: "Herramientas",
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       id_proyecto: {
-        Type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: "Proyectos",
@@ -25,10 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "herramientas_x_proyectos",
-      tableName:"herramientas_x_proyectos",
+      modelName: "Herramientas_x_proyectos",
+      tableName:"Herramientas_x_proyectos",
       timestamps: true,
     }
   );
-  return herramientas_x_proyectos;
+  return Herramientas_x_proyectos;
 };

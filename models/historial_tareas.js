@@ -4,7 +4,7 @@ const { Model, DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   class Historial_tareas extends Model {
     static associate(models) {
-      this.belongsTo(Tareas, { foreignKey: 'id_tarea' });
+      this.belongsTo(models.Tareas, { foreignKey: 'id_tarea' });
     }
   }
   Historial_tareas.init(

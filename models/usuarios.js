@@ -8,11 +8,11 @@ module.exports = (sequelize) => {
       this.hasOne(models.Roles, { foreignKey: "id_usuario" });
       // Relación muchos a muchos con Proyectos a través de ResponsablesProyecto
       this.belongsToMany(models.Proyectos, {
-        through: "ResponsablesProyecto",
+        through: models.Responsables_x_proyectos,
         foreignKey: "id_usuario",
         otherKey: "id_proyecto",
       });
-      Usuarios.belongsToMany(Proyectos, { through: CalificacionesUsuarios, foreignKey: 'id_usuario' });
+      Usuarios.belongsToMany(models.Proyectos, { through: models.Calificaciones_usuarios, foreignKey: 'id_usuario' });
     }   
   }
   Usuarios.init(

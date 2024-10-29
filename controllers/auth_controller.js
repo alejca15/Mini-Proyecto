@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { jwtSecret, jwtExpiresIn } = require(" .. /config");
-const { Usuarios } = require(" .. /models");
+const { jwtSecret, jwtExpiresIn } = require("../config");
+const { Usuarios } = require("../models");
 
 const iniciarSesion = async (req, res) => {
   const { username, password } = req.body;
@@ -38,7 +38,7 @@ const iniciarSesion = async (req, res) => {
   }
 };
 
-module.exports -
+module.exports =
   {
     iniciarSesion,
   };
