@@ -7,6 +7,7 @@ const responsables_x_proyectosRoutes = require('./routes/responsables_x_proyecto
 const proyectoRoutes = require('./routes/proyecto_routes')
 const app = express();
 const PORT = 3000;
+const authRoutes = require('./routes/authRoutes');
 
 app.use(express.json()); // Middleware para parsear JSON
 
@@ -16,6 +17,10 @@ sequelize.authenticate()
   .catch((error) => console.error('No se pudo conectar a la base de datos:', error));
 
 // Usar las rutas de productos
+
+
+
+app.use('/auth', authRoutes);
 app.use('/Usuarios', usuariosRoutes);
 app.use('/Tareas', tareasRoutes);
 app.use('/Roles', rolesRoutes)
