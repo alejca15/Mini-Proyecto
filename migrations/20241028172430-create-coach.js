@@ -16,7 +16,8 @@ module.exports = {
         type: Sequelize.STRING
       },
       correo_coach: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        Unique:true
       },
       createdAt: {
         allowNull: false,

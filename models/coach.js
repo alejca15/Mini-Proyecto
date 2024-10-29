@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       correo_coach: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique:true
       },
     },
     {
