@@ -1,26 +1,26 @@
 const { Model, DataTypes } = require("sequelize");
-const categorias = require("./categorias");
 
 module.exports = (sequelize) => {
   class Proyectos extends Model {
     static associate(models) {
-     
-
-      // Relación uno a muchos con Tareas
+      // Relaciones uno a muchos
       this.hasMany(models.Tareas, { foreignKey: "id_proyecto" });
-      this.hasMany(models.Roles,{foreignKey:"id_proyecto"})
+      this.hasMany(models.Roles, { foreignKey: "id_proyecto", as: "ProyectoRoles" }); 
       this.hasMany(models.Requisitos, { foreignKey: "id_proyecto" });
-      this.hasMany(models.Calificacion_proyectos, {foreignKey: "id_proyecto",});
+      this.hasMany(models.Calificacion_proyectos, { foreignKey: "id_proyecto" });
 
-
+      // Relaciones uno a muchos con Clientes, Categorías y Coach
       this.belongsTo(models.Clientes, { foreignKey: "id_cliente" });
       this.belongsTo(models.Categorias, { foreignKey: "id_categoria" });
       this.belongsTo(models.Coach, { foreignKey: "id_coach" });
 
-      this.belongsToMany(models.Usuarios, {through: models.Responsables_x_proyectos ,foreignKey: "id_proyecto"});
-      this.belongsToMany(models.Herramientas, {through: models.Herramientas_x_proyectos,foreignKey: "id_proyecto",});
-      this.belongsToMany(models.Usuarios, {through: models.Calificaciones_usuarios,foreignKey: "id_proyecto",});
-      this.belongsToMany(Usuarios, { through: models.Roles, foreignKey: 'id_proyecto' });
+      // Relaciones de muchos a muchos con Usuarios y Herramientas
+      this.belongsToMany(models.Usuarios, { through: models.Responsables_x_proyectos, foreignKey: "id_proyecto" });
+      this.belongsToMany(models.Herramientas, { through: models.Herramientas_x_proyectos, foreignKey: "id_proyecto" });
+      this.belongsToMany(models.Usuarios, { through: models.Calificaciones_usuarios, foreignKey: "id_proyecto" });
+
+      // Alias único para esta relación belongsToMany con Roles
+      this.belongsToMany(models.Usuarios, { through: models.Roles, as: "UsuariosRoles", foreignKey: "id_proyecto" });
     }
   }
 

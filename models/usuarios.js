@@ -7,7 +7,7 @@ module.exports = (sequelize) => {
       // Relaciones
       this.belongsToMany(models.Proyectos, {through: models.Responsables_x_proyectos,foreignKey: "id_usuario"});
       this.belongsToMany(models.Proyectos, {through: models.Calificaciones_usuarios, foreignKey: 'id_usuario' });
-      this.belongsToMany(Proyectos, { through: models.Roles, foreignKey: 'id_usuario' });
+      this.belongsToMany(models.Proyectos, { through: models.Roles, foreignKey: 'id_usuario' });
     }   
   }
   Usuarios.init(
