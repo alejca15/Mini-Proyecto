@@ -4,10 +4,7 @@ module.exports = (sequelize) => {
   class Coach extends Model {
     static associate(models) {
       // Relación uno a muchos con Proyectos
-      this.hasMany(models.Proyectos, {
-        foreignKey: "id_coach",
-        as: "Proyectos",
-      });
+      this.hasMany(models.Proyectos, {foreignKey: "id_coach"});
     }
   }
   Coach.init(

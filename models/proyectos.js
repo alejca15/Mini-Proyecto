@@ -4,28 +4,23 @@ const categorias = require("./categorias");
 module.exports = (sequelize) => {
   class Proyectos extends Model {
     static associate(models) {
-      // Relación muchos a muchos con Usuarios a través de ResponsablesProyecto
-      this.belongsToMany(models.Usuarios, {
-        through: "ResponsablesProyecto",
-        foreignKey: "id_proyecto",
-        otherKey: "id_usuario",
-      });
+     
 
       // Relación uno a muchos con Tareas
       this.hasMany(models.Tareas, { foreignKey: "id_proyecto" });
+      this.hasMany(models.Roles,{foreignKey:"id_proyecto"})
+      this.hasMany(models.Requisitos, { foreignKey: "id_proyecto" });
+      this.hasMany(models.Calificacion_proyectos, {foreignKey: "id_proyecto",});
+
+
       this.belongsTo(models.Clientes, { foreignKey: "id_cliente" });
       this.belongsTo(models.Categorias, { foreignKey: "id_categoria" });
       this.belongsTo(models.Coach, { foreignKey: "id_coach" });
-      this.hasMany(models.Requisitos, { foreignKey: "id_proyecto" });
-      this.belongsToMany(models.Herramientas, {
-        through: models.Herramientas_x_proyectos, 
-        foreignKey: "id_proyecto",
-      });
-      this.hasMany(models.Calificacion_proyectos, { foreignKey: "id_proyecto" });
-      this.belongsToMany(models.Usuarios, {
-        through: models.Calificaciones_usuarios,
-        foreignKey: "id_proyecto",
-      });
+
+      this.belongsToMany(models.Usuarios, {through: models.Responsables_x_proyectos ,foreignKey: "id_proyecto"});
+      this.belongsToMany(models.Herramientas, {through: models.Herramientas_x_proyectos,foreignKey: "id_proyecto",});
+      this.belongsToMany(models.Usuarios, {through: models.Calificaciones_usuarios,foreignKey: "id_proyecto",});
+      this.belongsToMany(Usuarios, { through: models.Roles, foreignKey: 'id_proyecto' });
     }
   }
 
