@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
     static associate(models) {
       // Relación uno a uno con Usuarios
       this.belongsTo(models.Usuarios, { foreignKey: 'id_usuario' });
+      this.belongsTo(models.Proyectos,{foreignKey:"id_proyecto"} )
     }
   }
   Roles.init(

@@ -32,6 +32,30 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      id_cliente: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:"Clientes",
+          key:"id"
+        }
+      },
+      id_coach: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:"Coach",
+          key:"id"
+        }
+      },
+      id_categoría: {
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:"Categorias",
+          key:"id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
