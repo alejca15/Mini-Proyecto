@@ -12,7 +12,7 @@ module.exports = {
       nombre_usuario: {
         type: Sequelize.STRING
       },
-      apellido_usuario: {
+      contra_usuario: {
         type: Sequelize.STRING
       },
       correo: {
