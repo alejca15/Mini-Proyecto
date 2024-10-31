@@ -6,6 +6,8 @@ module.exports = (sequelize) => {
      Herramientas.belongsToMany(models.Proyectos, {
         through: models.Herramientas_x_proyectos, 
         foreignKey: "id_herramienta", 
+        otherKey: "id_proyecto",
+        as: "Proyectos"
       });
     }
   }

@@ -5,6 +5,6 @@ const comentarios_routes = require("../controllers/Comentarios_controller"); // 
 // Definir las rutas
 router.get("/", comentarios_routes.get_all_Comentarios); // Obtener todos las categorias
 router.post("/", comentarios_routes.post_Comentarios); // Agregar categorias
-router.put("/", comentarios_routes.put_Comentarios); //Edita a los ccategorias
-router.delete("/", comentarios_routes.delete_Comentarios); //eliminar al categorias
+router.put("/:id", comentarios_routes.put_Comentarios); //Edita a los ccategorias
+router.delete("/:id", comentarios_routes.delete_Comentarios); //eliminar al categorias
 module.exports = router;
