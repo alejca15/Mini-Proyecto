@@ -5,6 +5,6 @@ const Clientes_controller = require("../controllers/Clientes_controller"); // Im
 // Definir las rutas
 router.get("/", Clientes_controller.get_all_Cliente); // Obtener todos los clientes
 router.post("/", Clientes_controller.post_Cliente); // Agregar clientes
-router.put("/", Clientes_controller.put_Cliente); //Edita a los clientes
-router.delete("/", Clientes_controller.delete_Cliente); //eliminar al cliente
+router.put("/:id", Clientes_controller.put_Cliente); //Edita a los clientes
+router.delete("/:id", Clientes_controller.delete_Cliente); //eliminar al cliente
 module.exports = router;

@@ -38,6 +38,7 @@ const put_Usuario= async (req , res) => {
    await usuarios.update({nombre_usuario, apellido_usuario,correo });
    res.status(200).json(usuarios)
   } catch (error) {
+    console.error(error);
    res.status(500).json({error:'error al actualizar el usuario.'})
   }
    
@@ -46,13 +47,12 @@ const put_Usuario= async (req , res) => {
  const delete_Usuario = async (req , res) => {
    try {
      const{id}=req.params
- 
      const usuarios = await Usuarios.findByPk(id);
      if(!usuarios) return res.status(404).json({error:'usuario no encontrado'});
- 
      await usuarios.destroy()
      res.status(204).send()
    } catch (error) {
+    console.error(error);
      res.status(500).json({error:'error al eliminar el Usuario.'})
    }
  }
