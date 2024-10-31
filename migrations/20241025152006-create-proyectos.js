@@ -48,7 +48,7 @@ module.exports = {
           key:"id"
         }
       },
-      id_categoría: {
+      id_categoria: {
         type: Sequelize.INTEGER,
         allowNull:false,
         references:{
