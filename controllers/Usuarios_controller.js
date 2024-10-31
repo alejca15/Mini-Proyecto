@@ -13,14 +13,15 @@ const get_all_usuarios = async (req, res) => {
 //----------------------Post------------------------//
 const post_usuario = async (req, res) => {
   try {
-    const { nombre_usuario, apellido_usuario,correo} = req.body;
+    const { nombre_usuario, contra_usuario, correo} = req.body;
     const usuario = await Usuarios.create({
-      nombre_usuario,
-      apellido_usuario,
-      correo
+      nombre_usuario: nombre_usuario,
+      contra_usuario: contra_usuario,
+      correo: correo
     });
     res.status(201).json(usuario);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Error al crear el usuario" });
   }
 };
