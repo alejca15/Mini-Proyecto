@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      contra_apellido_usuario: {
+      contra_usuario: {
         type: DataTypes.STRING,
         allowNull: false,
       },
