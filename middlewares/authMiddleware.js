@@ -1,6 +1,6 @@
 // middlewares/authMiddleware.js
 const jwt = require("jsonwebtoken");
-const { jwtSecret } = require(" .. /config");
+const { jwtSecret } = require("../config");
 
 // Middleware para verificar el token JWT
 const verificarToken = (req, res, next) => {
@@ -20,4 +20,14 @@ const verificarToken = (req, res, next) => {
   }
 };
 
-module.exports = verificarToken;
+//Verifica si es usuario 
+const isAdmin = (req, res, next) => {
+  if (req.user && req.user.rol === "administrador") {
+    return next();
+  } else {
+    return res.status(403).json({ error: "Acceso denegado" });
+  }
+};
+
+
+module.exports = {verificarToken,isAdmin};

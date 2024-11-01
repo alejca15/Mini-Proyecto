@@ -10,14 +10,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nombre_usuario: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       contra_usuario: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       correo: {
         type: Sequelize.STRING,
-        unique:true
+        unique:true,
+        allowNull: false,
+      },
+      rol: {
+        type: Sequelize.STRING,
+        unique:true,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
