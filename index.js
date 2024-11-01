@@ -14,16 +14,11 @@ const Clientes_routes = require('./routes/Clientes_routes')
 const Categorias_routes = require('./routes/Categorias_routes')
 const calificaciones_routes = require('./routes/calificaciones_routes')
 const calificacion_proyecto_routes = require('./routes/calificacion_proyecto_routes')
-
-
-
-
-
-
 const proyectoRoutes = require('./routes/proyecto_routes')
 const app = express();
 const PORT = 3000;
 const authRoutes = require('./routes/auth_routes');
+const auth = require('./middlewares/authMiddleware');
 
 app.use(express.json()); // Middleware para parsear JSON
 
@@ -36,7 +31,7 @@ sequelize.authenticate()
 
 app.use('/auth', authRoutes);
 app.use('/Usuarios', usuariosRoutes);
-app.use('/Tareas', tareasRoutes);
+app.use('/Tareas',auth.verificarToken, tareasRoutes);
 app.use('/Roles', rolesRoutes)
 app.use('/Proyectos', proyectoRoutes)
 app.use('/ResponsablesxProyectos', responsables_x_proyectosRoutes)
