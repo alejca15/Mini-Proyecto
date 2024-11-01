@@ -14,19 +14,20 @@ const get_all_proyectos = async (req, res) => {
 //----------------------Post------------------------//
 const post_proyectos = async (req, res) => {
     try {
-      const { nombre_proyecto, completado,progreso,fecha_inicio,fecha_entrega,id_cliente,id_coach,id_categoria} = req.body;
+      const { nombre_proyecto, completado,progreso,fecha_inicio,fecha_de_entrega,id_cliente,id_coach,id_categoria} = req.body;
       const proyecto = await Proyectos.create({
         nombre_proyecto,
         completado,
         progreso,
         fecha_inicio,
-        fecha_entrega,
+        fecha_de_entrega,
         id_cliente,
         id_coach,
         id_categoria
       });
       res.status(201).json(proyecto);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: "Error al crear el proyecto" });
     }
   };

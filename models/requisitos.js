@@ -16,14 +16,10 @@ module.exports = (sequelize) => {
           key:"id"
         }
       },
-      comentario: {
+      requisito: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
+      }
     },
     {
       sequelize,

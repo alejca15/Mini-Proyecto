@@ -1,5 +1,5 @@
 const { Responsables_x_proyectos } = require("../models");
-// const { post_proyectos } = require("./Proyectos_controller");
+
 
 //----------------------Get------------------------//
 const get_all_responsables_x_proyectos = async (req, res) => {
