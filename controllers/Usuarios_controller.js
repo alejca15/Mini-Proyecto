@@ -15,9 +15,9 @@ const post_usuario = async (req, res) => {
   try {
     const { nombre_usuario, contra_usuario, correo} = req.body;
     const usuario = await Usuarios.create({
-      nombre_usuario: nombre_usuario,
-      contra_usuario: contra_usuario,
-      correo: correo
+      nombre_usuario,
+      contra_usuario,
+      correo
     });
     res.status(201).json(usuario);
   } catch (error) {

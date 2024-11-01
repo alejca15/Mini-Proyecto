@@ -13,15 +13,16 @@ const get_all_Tareas = async (req, res) => {
 //----------------------Post------------------------//
 const post_Tareas = async (req, res) => {
   try {
-    const { id_proyecto, nombre_tarea, descripcion, estado} = req.body;
+    const { id_proyecto, nombre_tarea, descripcion_tarea, estado} = req.body;
     const tareas = await Tareas.create({
      id_proyecto,
      nombre_tarea,
-     descripcion,
+     descripcion_tarea,
      estado
     });
     res.status(201).json(tareas);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: "Error al crear la tarea" });
   }
 };
@@ -31,12 +32,12 @@ const post_Tareas = async (req, res) => {
 const put_Tareas= async (req , res) => {
   try {
    const{id}=req.params
-   const  { id_proyecto, nombre_tarea, descripcion, estado }= req.body;
+   const  { id_proyecto, nombre_tarea, descripcion_tarea, estado }= req.body;
  
    const tareas = await Tareas.findByPk(id);
    if(!tareas) return res.status(404).json({error:'Tarea no encontrado'});
  
-   await tareas.update({id_proyecto, nombre_tarea, descripcion, estado });
+   await tareas.update({id_proyecto, nombre_tarea, descripcion_tarea, estado });
    res.status(200).json(tareas)
   } catch (error) {
    res.status(500).json({error:'error al actualizar la tarea.'})

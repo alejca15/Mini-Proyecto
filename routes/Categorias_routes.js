@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Categorias_controller = require("../controllers/categorias_controller"); // Importar el controlador
+const Categorias_controller = require("../controllers/Categorias_controller"); // Importar el controlador
 
 // Definir las rutas
 router.get("/", Categorias_controller.get_all_Categoria); // Obtener todos las categorias

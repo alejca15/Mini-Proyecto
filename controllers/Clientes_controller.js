@@ -21,6 +21,8 @@ const post_Cliente = async (req, res) => {
     });
     res.status(201).json(cliente);
   } catch (error) {
+    console.error(error);
+    
     res.status(500).json({ error: "Error al crear al cliente" });
   }
 };
