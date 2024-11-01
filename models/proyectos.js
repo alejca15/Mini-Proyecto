@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
 
       // Relaciones de muchos a muchos con Usuarios y Herramientas
 
-      this.belongsToMany(models.Usuarios, { through: models.Responsables_x_proyectos, foreignKey: "id_proyecto", otherKey: "id_usuario", as: "UsuariosResponsables"});
+      this.belongsToMany(models.Usuarios, { through: models.Responsables_x_proyectos, foreignKey: "id_proyecto", as: "UsuariosResponsables"});
       this.belongsToMany(models.Herramientas, { through: models.Herramientas_x_proyectos, foreignKey: "id_proyecto",otherKey: "id_herramienta", as: "Herramientas"});
 
       this.belongsToMany(models.Usuarios, { through: models.Calificaciones_usuarios, foreignKey: "id_proyecto" });
