@@ -33,8 +33,9 @@ const put_historial_tarea = async (req , res) => {
      if(!historial_tareas) return res.status(404).json({error:'Historial de tareas no encontrado'});
    
      await historial_tareas.update({id_tarea,fecha_completado});
-     res.status(200).json(coach)
+     res.status(200).json(historial_tareas)
     } catch (error) {
+      console.error(error);
      res.status(500).json({error:'error al actualizar el historial.'})
     }
      

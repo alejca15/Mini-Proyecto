@@ -20,6 +20,8 @@ const post_calificacion_proyecto = async (req, res) => {
     });
     res.status(201).json(calificacion_proyectos);
   } catch (error) {
+    console.error(error);
+    
     res.status(500).json({ error: "Error al crear las calificaciones" });
   }
 };
@@ -30,11 +32,13 @@ const put_calificacion_proyecto= async (req , res) => {
    const  { nota, id_proyecto }= req.body;
  
    const calificacion_proyectos = await Calificacion_proyectos.findByPk(id);
-   if(!coach) return res.status(404).json({error:'calificaciones no encontradas'});
+   if(!calificacion_proyectos) return res.status(404).json({error:'calificaciones no encontradas'});
  
-   await coach.update({ nota, id_proyecto});
+   await calificacion_proyectos.update({ nota, id_proyecto});
    res.status(200).json(calificacion_proyectos)
   } catch (error) {
+    console.error(error);
+  
    res.status(500).json({error:'error al actualizar las calificaciones.'})
   }
    
