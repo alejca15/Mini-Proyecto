@@ -11,16 +11,16 @@ module.exports = (sequelize) => {
       id_tarea: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references:{
-          model:"tareas",
-          key:"id"
-        }
+        references: {
+          model: "tareas",
+          key: "id",
+        },
       },
       comentario: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      date: {
+      fecha_hora: {
         type: DataTypes.DATE,
         allowNull: false,
       },

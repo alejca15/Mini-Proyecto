@@ -13,51 +13,56 @@ const get_all_Comentarios = async (req, res) => {
 //----------------------Post------------------------//
 const post_Comentarios = async (req, res) => {
   try {
-    const { id_tarea , comentar ,fecha_Hora_Comentario} = req.body;
-    const comentario = await Comentarios.create({
-    id_tarea ,
-    comentar ,
-    fecha_Hora_Comentario
+    const { id_tarea, comentario, fecha_hora } = req.body;
+    const comentario_agregado = await Comentarios.create({
+      id_tarea,
+      comentario,
+      fecha_hora,
     });
-    res.status(201).json(comentario);
+    res.status(201).json(comentario_agregado);
   } catch (error) {
     res.status(500).json({ error: "Error al crear el comentario" });
   }
 };
 
-
-
-const put_Comentarios= async (req , res) => {
+const put_Comentarios = async (req, res) => {
   try {
-   const{id}=req.params
-   const  {  nombre_categoria }= req.body;
- 
-   const comentario = await Comentarios.findByPk(id);
-   if(!comentario) return res.status(404).json({error:'categoria no encontrada'});
- 
-   await comentario.update({ id_tarea , comentar , fecha_Hora_Comentario});
-   res.status(200).json(comentario)
+    const { id } = req.params;
+    const { id_tarea, comentario, fecha_Hora_Comentario } = req.body;
+
+    const comentario_guardado = await Comentarios.findByPk(id);
+    if (!comentario_guardado)
+      return res.status(404).json({ error: "categoria no encontrada" });
+
+    await comentario_guardado.update({
+      id_tarea,
+      comentario,
+      fecha_Hora_Comentario,
+    });
+    res.status(200).json(comentario_guardado);
   } catch (error) {
-   res.status(500).json({error:'error al actualizar el comentario.'})
+    res.status(500).json({ error: "error al actualizar el comentario." });
   }
-   
- }
- 
- const delete_Comentarios = async (req , res) => {
-   try {
-     const{id}=req.params
- 
-     const comentario = await Comentarios.findByPk(id);
-     if(!comentario) return res.status(404).json({error:'comentario no encontrado'});
- 
-     await comentario.destroy()
-     res.status(204).send()
-   } catch (error) {
-     res.status(500).json({error:'error al eliminar el comentario.'})
-   }
- }
+};
 
-module.exports = { get_all_Comentarios, post_Comentarios, put_Comentarios, delete_Comentarios};
+const delete_Comentarios = async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const comentario = await Comentarios.findByPk(id);
+    if (!comentario)
+      return res.status(404).json({ error: "comentario no encontrado" });
 
+    await comentario.destroy();
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: "error al eliminar el comentario." });
+  }
+};
 
+module.exports = {
+  get_all_Comentarios,
+  post_Comentarios,
+  put_Comentarios,
+  delete_Comentarios,
+};
