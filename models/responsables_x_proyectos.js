@@ -8,6 +8,11 @@ module.exports = (sequelize) => {
 
   Responsables_x_proyectos.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       id_usuario: {
         type: DataTypes.INTEGER,
         allowNull: false,
