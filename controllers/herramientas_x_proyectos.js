@@ -32,7 +32,7 @@ const put_herramientas_x_proyectos = async (req , res) => {
      const herramientas_x_proyectos = await Herramientas_x_proyectos.findByPk(id);
      if(!herramientas_x_proyectos) return res.status(404).json({error:'Historial de tareas no encontrado'});
    
-     await herramientas_x_proyectos.update({id_tarea,fecha_completado});
+     await herramientas_x_proyectos.update({id_herramienta,id_proyecto});
      res.status(200).json(coach)
     } catch (error) {
      res.status(500).json({error:'error al actualizar el historial.'})
