@@ -10,7 +10,7 @@ const get_all_responsables_x_proyectos = async (req, res) => {
       console.error(error); // Imprimir error para depuración
       res.status(500).json({ error: "Error al obtener los Responsable_x_proyecto." });
     }
-  };
+  }; 
   //----------------------Post------------------------//
   const post_responsables_x_proyectos = async (req, res) => {
     try {
@@ -21,6 +21,7 @@ const get_all_responsables_x_proyectos = async (req, res) => {
       });
       res.status(201).json(responsables_x_proyectos);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: "Error al crear el Responsables_x_proyectos" });
     }
   };

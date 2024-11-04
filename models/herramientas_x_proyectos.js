@@ -6,6 +6,11 @@ module.exports = (sequelize) => {
   }
   Herramientas_x_proyectos.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
       id_herramienta: {
         type: DataTypes.INTEGER,
         allowNull: false,

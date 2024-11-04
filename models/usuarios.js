@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   class Usuarios extends Model {
     static associate(models) {
       // Relaciones
-      this.belongsToMany(models.Proyectos, {through: models.Responsables_x_proyectos,foreignKey: "id_usuario", otherKey: "id_proyecto", as: "ProyectosResponsables" });
+      this.belongsToMany(models.Proyectos, {through: models.Responsables_x_proyectos,foreignKey: "id_usuario", as: "ProyectosResponsables" });
       this.belongsToMany(models.Proyectos, {through: models.Calificaciones_usuarios, foreignKey: 'id_usuario', as: "ProyectosCalificaciones" });
       this.belongsToMany(models.Proyectos, { through: models.Roles, foreignKey: 'id_usuario' });
     }   
