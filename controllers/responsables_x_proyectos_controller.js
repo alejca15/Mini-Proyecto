@@ -21,6 +21,7 @@ const get_all_responsables_x_proyectos = async (req, res) => {
       });
       res.status(201).json(responsables_x_proyectos);
     } catch (error) {
+      console.error(error);
       res.status(500).json({ error: "Error al crear el Responsables_x_proyectos" });
     }
   };
