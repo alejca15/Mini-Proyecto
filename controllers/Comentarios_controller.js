@@ -21,6 +21,7 @@ const post_Comentarios = async (req, res) => {
     });
     res.status(201).json(comentario_agregado);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Error al crear el comentario" });
   }
 };
