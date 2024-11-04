@@ -24,7 +24,6 @@ module.exports = {
       },
       rol: {
         type: Sequelize.STRING,
-        unique:true,
         allowNull: false,
       },
       createdAt: {
