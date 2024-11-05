@@ -112,3 +112,12 @@ npx sequelize-cli db:migrate
 Para iniciar el servidor, utiliza el siguiente comando:
 
 node index.js
+
+
+
+# participantes del proyecto
+
+Nixon 
+Eidrian 
+Patrick
+Alejandro
